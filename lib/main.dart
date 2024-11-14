@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -9,13 +9,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       home: MainPage(),
     );
   }
 }
 
 class MainPage extends StatefulWidget {
+  const MainPage({super.key});
+
   @override
   _MainPageState createState() => _MainPageState();
 }
@@ -31,12 +33,12 @@ class _MainPageState extends State<MainPage> {
     if (index == 2) {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => BonusCardPage()),
+        MaterialPageRoute(builder: (context) => const BonusCardPage()),
       );
     } else if (index == 4) {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => ProfilePage()),
+        MaterialPageRoute(builder: (context) => const ProfilePage()),
       );
     }
   }
@@ -75,7 +77,7 @@ class _MainPageState extends State<MainPage> {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => BonusCardPage()),
+                        MaterialPageRoute(builder: (context) => const BonusCardPage()),
                       );
                     },
                     child: Container(
@@ -139,14 +141,19 @@ class _MainPageState extends State<MainPage> {
   }
 }
 
-class ProfilePage extends StatelessWidget {
+
+
+
+class BonusCardPage extends StatelessWidget {
+  const BonusCardPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Settings Page'),
+        title: const Text('Bonus Card Page'),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.of(context).pop();
           },
@@ -155,7 +162,7 @@ class ProfilePage extends StatelessWidget {
       body: Center(
         child: Container(
           width: 300,
-          padding: EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(16.0),
           decoration: BoxDecoration(
             color: Colors.grey[200],
             borderRadius: BorderRadius.circular(8.0),
@@ -166,124 +173,20 @@ class ProfilePage extends StatelessWidget {
               CircleAvatar(
                 radius: 40,
                 backgroundColor: Colors.grey[400],
-                child: Icon(
+                child: const Icon(
                   Icons.person,
                   color: Colors.white,
                   size: 40,
                 ),
               ),
-              SizedBox(height: 8.0),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => SettingsPage()),
-                  );
-                },
-                child: Text(
-                  'Ayana',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.blue,
-                  ),
-                ),
-              ),
-              SizedBox(height: 4.0),
-              GestureDetector(
-                onTap: () {
-                  // Логика для редактирования
-                },
-                child: Text(
-                  'edit',
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.grey[600],
-                  ),
-                ),
-              ),
-              SizedBox(height: 16.0),
-              _buildTextField('Number'),
-              SizedBox(height: 8.0),
-              _buildTextField('Email'),
-              SizedBox(height: 8.0),
-              _buildTextField('Регион'),
-              SizedBox(height: 8.0),
-              _buildTextField('Адрес'),
-              SizedBox(height: 8.0),
-              _buildTextField('Уведомления'),
-              SizedBox(height: 16.0),
-              ElevatedButton(
-                onPressed: () {
-                  // Логика удаления аккаунта
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.grey[800],
-                  padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8.0),
-                  ),
-                ),
-                child: Text(
-                  'Delete account',
-                  style: TextStyle(color: Colors.white),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildTextField(String hint) {
-    return TextField(
-      decoration: InputDecoration(
-        hintText: hint,
-        filled: true,
-        fillColor: Colors.white,
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8.0),
-          borderSide: BorderSide.none,
-        ),
-        contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-      ),
-    );
-  }
-}
-
-class BonusCardPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Container(
-          width: 300,
-          padding: EdgeInsets.all(16.0),
-          decoration: BoxDecoration(
-            color: Colors.grey[200],
-            borderRadius: BorderRadius.circular(8.0),
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              CircleAvatar(
-                radius: 40,
-                backgroundColor: Colors.grey[400],
-                child: Icon(
-                  Icons.person,
-                  color: Colors.white,
-                  size: 40,
-                ),
-              ),
-              SizedBox(height: 16.0),
+              const SizedBox(height: 16.0),
               Container(
-                padding: EdgeInsets.all(16.0),
+                padding: const EdgeInsets.all(16.0),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(8.0),
                 ),
-                child: Row(
+                child: const Row(
                   children: [
                     Icon(
                       Icons.qr_code,
@@ -324,7 +227,126 @@ class BonusCardPage extends StatelessWidget {
 
 
 
+
+class ProfilePage extends StatelessWidget {
+  const ProfilePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Settings Page'),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
+      ),
+      body: Center(
+        child: Container(
+          width: 300,
+          padding: const EdgeInsets.all(16.0),
+          decoration: BoxDecoration(
+            color: Colors.grey[200],
+            borderRadius: BorderRadius.circular(8.0),
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              CircleAvatar(
+                radius: 40,
+                backgroundColor: Colors.grey[400],
+                child: const Icon(
+                  Icons.person,
+                  color: Colors.white,
+                  size: 40,
+                ),
+              ),
+              const SizedBox(height: 8.0),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const SettingsPage()),
+                  );
+                },
+                child: const Text(
+                  'Ayana',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Color.fromARGB(255, 40, 51, 63),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 4.0),
+              GestureDetector(
+                onTap: () {
+                  // Логика для редактирования
+                },
+                child: Text(
+                  'edit',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.grey[600],
+                  ),
+                ),
+              ),
+              const SizedBox(height: 16.0),
+              _buildTextField('Number'),
+              const SizedBox(height: 8.0),
+              _buildTextField('Email'),
+              const SizedBox(height: 8.0),
+              _buildTextField('Регион'),
+              const SizedBox(height: 8.0),
+              _buildTextField('Адрес'),
+              const SizedBox(height: 8.0),
+              _buildTextField('Уведомления'),
+              const SizedBox(height: 16.0),
+              ElevatedButton(
+                onPressed: () {
+                  // Логика удаления аккаунта
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.grey[800],
+                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                ),
+                child: const Text(
+                  'Delete account',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildTextField(String hint) {
+    return TextField(
+      decoration: InputDecoration(
+        hintText: hint,
+        filled: true,
+        fillColor: Colors.white,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8.0),
+          borderSide: BorderSide.none,
+        ),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      ),
+    );
+  }
+}
+
+
 class SettingsPage extends StatefulWidget {
+  const SettingsPage({super.key});
+
   @override
   _SettingsPageState createState() => _SettingsPageState();
 }
@@ -336,84 +358,84 @@ class _SettingsPageState extends State<SettingsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Settings Page'),
+        title: const Text('Settings Page'),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.of(context).pop();
           },
         ),
       ),
       body: Container(
-        color: Color.fromARGB(255, 238, 232, 232),
-        padding: EdgeInsets.all(16.0),
+        color: const Color.fromARGB(255, 238, 232, 232),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               'Name',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 16.0,
               ),
             ),
-            Divider(),
-            Text(
+            const Divider(),
+            const Text(
               'Umar',
               style: TextStyle(
                 fontSize: 16.0,
               ),
             ),
-            SizedBox(height: 16.0),
-            Text(
+            const SizedBox(height: 16.0),
+            const Text(
               'Phone number',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 16.0,
               ),
             ),
-            Divider(),
-            Text(
+            const Divider(),
+            const Text(
               '+96 XXX XXX XXX',
               style: TextStyle(
                 fontSize: 16.0,
               ),
             ),
-            SizedBox(height: 16.0),
-            Text(
+            const SizedBox(height: 16.0),
+            const Text(
               'Email',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 16.0,
               ),
             ),
-            Divider(),
-            Text(
+            const Divider(),
+            const Text(
               'umar_dont_do_this@gmail.com',
               style: TextStyle(
                 fontSize: 16.0,
               ),
             ),
-            SizedBox(height: 16.0),
-            Text(
+            const SizedBox(height: 16.0),
+            const Text(
               'Birthday date',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 16.0,
               ),
             ),
-            Divider(),
-            Text(
+            const Divider(),
+            const Text(
               'Not specified',
               style: TextStyle(
                 fontSize: 16.0,
               ),
             ),
-            SizedBox(height: 16.0),
+            const SizedBox(height: 16.0),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
+                const Text(
                   'Allow notifications',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
@@ -430,12 +452,12 @@ class _SettingsPageState extends State<SettingsPage> {
                 ),
               ],
             ),
-            SizedBox(height: 16.0),
+            const SizedBox(height: 16.0),
             GestureDetector(
               onTap: () {
                 // Nav to lang choose page
               },
-              child: Row(
+              child: const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
@@ -449,12 +471,12 @@ class _SettingsPageState extends State<SettingsPage> {
                 ],
               ),
             ),
-            SizedBox(height: 16.0),
+            const SizedBox(height: 16.0),
             GestureDetector(
               onTap: () {
                 // LogOut logic
               },
-              child: Text(
+              child: const Text(
                 'Log out of profile',
                 style: TextStyle(
                   color: Colors.red,
@@ -463,12 +485,12 @@ class _SettingsPageState extends State<SettingsPage> {
                 ),
               ),
             ),
-            Spacer(),
+            const Spacer(),
             GestureDetector(
               onTap: () {
                 // Delete logic
               },
-              child: Text(
+              child: const Text(
                 'Delete profile',
                 style: TextStyle(
                   color: Colors.red,
